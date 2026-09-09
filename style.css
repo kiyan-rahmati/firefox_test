@@ -1,0 +1,186 @@
+*
+{
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+   font-family: sans-serif;
+}
+:root
+{
+   --newtab-background-color: #f9f9fb;
+   --newtab-search-first-shadow: rgba(9, 32, 77, 0.12);
+   --newtab-search-second-shadow: rgba(29, 17, 51, 0.12);
+   --newtab-focus-border: #0060DF;
+   --newtab-focus-border-selected: rgba(0, 0, 0, 0.15);
+   --newtab-focus-outline: rgba(0, 96, 223, 0.25);
+   --newtab-border-primary-color: #B1B1B3;
+   --newtab-inner-box-shadow-color-nte: rgba(9, 32, 77, 0.12);
+   --newtab-tile-shadow-secondary: rgba(29, 17, 51, 0.2);
+   --newtab-text-secondary-color: #737373;
+   --newtab-topsites-background-color: #FFF;
+   --newtab-topsites-label-color: inherit;
+   --newtab-topsites-outer-card-hover: rgba(0, 0, 0, 0.05);
+   --newtab-background-primary-text-color: #151515;
+   --newtab-focus-outline: rgba(0, 96, 223, 0.25);
+   --newtab-focus-border: #0060DF;
+   --newtab-focus-border-selected: rgba(0, 0, 0, 0.15);
+   --newtab-search-text-color: #585165;
+}
+body
+{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   min-height: 100vh;
+   width: 100%;
+   background: var(--newtab-background-color);
+}
+.logo-and-wordmark
+{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 48px;
+}
+.logo-and-wordmark .logo
+{
+   width: 82px;
+   height: 82px;
+   background: url(./images/logo.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+.logo-and-wordmark .wordmark
+{
+   width: 134px;
+   height: 82px;
+   background: url(./images/firefox-wordmark.svg);
+   background-repeat: no-repeat;
+   background-size: 134px;
+   background-position: center;
+   margin-inline-start: 15px;
+}
+
+.search-inner-wrapper
+{
+   position: relative;
+   width: 60%;
+   height: 48px;
+   display: flex;
+   cursor: default;
+   margin: 0 auto;
+   padding-bottom: 30px;
+}
+.search-inner-wrapper input[type="search"]
+{
+   width: 100%;
+   background: #fff url(./images/favicon.ico) 16px center no-repeat;
+   background-size: 25px;
+   padding-inline-start: 52px;
+   padding-inline-end: 10px;
+   border-radius: 8px;
+   border: 1px solid transparent;
+   outline: none;
+   box-shadow: 0 3px 8px var(--newtab-search-first-shadow), 0 0 2px var(--newtab-search-second-shadow);
+   font-size: 15px;
+   font-weight: 500;
+   color: var(--newtab-search-text-color);
+}
+.search-inner-wrapper input[type="search"]:focus
+{
+   border: 1px solid var(--newtab-focus-border);
+   outline: 0;
+   box-shadow: 0 0 0 2px var(--newtab-focus-outline);
+}
+
+section
+{
+   max-width: 70%;
+   width: 100%;
+   display: grid;
+   place-items: center;
+}
+section .top-sites-list
+{
+   list-style: none;
+   padding: 0;
+}
+section .top-sites-list .top-site-outer
+{
+   display: inline-block;
+   height: 100%;
+   border-radius: 8px;
+   padding: 20px;
+}
+section .top-sites-list .top-site-outer:is(.active, :hover, :active)
+{
+   background: var(--newtab-topsites-outer-card-hover);
+}
+section .top-site-inner
+{
+   position: relative;
+   width: 100%;
+   height: 100%;
+   border-radius: 8px;
+}
+
+section .top-site-inner a
+{
+   display: block;
+   text-decoration: none;
+   outline: none;
+   border: none;
+   color: var(--newtab-topsites-label-color);
+}
+section .top-site-inner a .tile
+{
+   position: relative;
+   width: 80px;
+   height: 80px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+   font-size: 32px;
+   font-weight: 400;
+   text-transform: uppercase;
+   border-radius: 8px;
+   color: var(--newtab-text-secondary-color);
+   box-shadow: 0 3px 8px var(--newtab-inner-box-shadow-color-nte), 0 0 2px var(--newtab-tile-shadow-secondary);
+   background: var(--newtab-topsites-background-color);
+}
+.tile .icon
+{
+   border-radius: 4px;
+   width: 48px;
+   height: 48px;
+   overflow: hidden;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+section .top-site-inner .title
+{
+   padding-top: 8px;
+   color: var(--newtab-topsites-label-color);
+   font-size: 12px;
+   text-align: center;
+   position: relative;
+}
+section .top-site-inner .title span
+{
+   display: block;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   width: 100%;
+   white-space: nowrap;
+}
+@media(max-width: 600px){
+   .search-inner-wrapper
+   {
+      width: 80%;
+   }  
+}

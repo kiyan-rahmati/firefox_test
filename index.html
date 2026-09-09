@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <link rel="shortcut icon" href="./images/logo.png" type="image/png">
+   <title>New Tab</title>
+</head>
+<body>
+   <div class="logo-and-wordmark">
+      <div class="logo"></div>
+      <div class="wordmark"></div>
+   </div>
+   <div class="search-inner-wrapper">
+      <input type="search" class="query" spellcheck="false" placeholder="Search with Google or enter address">
+   </div>
+   <section class="top-sites">
+      <ul class="top-sites-list">
+         <li class="top-site-outer">
+            <div class="top-site-inner">
+               <a href="https://www.youtube.com" title="Youtube">
+                  <div class="tile">
+                     <img src="./images/youtube.png" class="icon">
+                  </div>
+                  <div class="title">
+                     <span>youtube</span>
+                  </div>
+               </a>
+            </div>
+         </li>
+         <li class="top-site-outer">
+            <div class="top-site-inner">
+               <a href="https://www.facebook.com" title="facebook">
+                  <div class="tile">
+                     <img src="./images/facebook.png" class="icon">
+                  </div>
+                  <div class="title">
+                     <span>facebook</span>
+                  </div>
+               </a>
+            </div>
+         </li>
+         <li class="top-site-outer">
+            <div class="top-site-inner">
+               <a href="https://www.wikipedia.com" title="wikipedia">
+                  <div class="tile">
+                     <img src="./images/wikipedia.png" class="icon">
+                  </div>
+                  <div class="title">
+                     <span>wikipedia</span>
+                  </div>
+               </a>
+            </div>
+         </li>
+         <li class="top-site-outer">
+            <div class="top-site-inner">
+               <a href="https://www.twitter.com" title="twitter">
+                  <div class="tile">
+                     <img src="./images/twitter.png" class="icon">
+                  </div>
+                  <div class="title">
+                     <span>twitter</span>
+                  </div>
+               </a>
+            </div>
+         </li>
+         <li class="top-site-outer">
+            <div class="top-site-inner">
+               <a href="https://www.reddit.com" title="reddit">
+                  <div class="tile">
+                     <img src="./images/reddit.png" class="icon">
+                  </div>
+                  <div class="title">
+                     <span>reddit</span>
+                  </div>
+               </a>
+            </div>
+         </li>
+      </ul>
+   </section>
+   <script>
+      const query = document.querySelector('.query')
+      function search(){
+         const url = "https://www.google.com/search?q="+query.value
+         window.open(url,"_self")
+      }
+      query.addEventListener('keydown',(e)=>{
+         if(e.keyCode === 13){
+            search();
+         }
+      })
+   </script>
+</body>
+</html>         
