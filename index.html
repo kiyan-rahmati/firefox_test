@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neon Tab: a playful start page with a bot-buster mini-game, clock, daily drop and to-do list.">
+  <title>Neon Tab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ============ GATE: fake "prove you're not a bot" mini-game ============ -->
+  <section id="gate" class="gate" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <h1 id="gateTitle" class="sign">Neon Tab</h1>
+      <p class="gate-sub">Beat 3 quick rounds to prove you're not a bot. You get 3 lives.</p>
+
+      <form id="nickForm" class="mb-0" novalidate>
+        <label for="nick" class="form-label">Pick your player name</label>
+        <div class="input-group">
+          <input id="nick" class="form-control form-control-lg" type="text" maxlength="16" autocomplete="nickname" placeholder="e.g. PixelFox" required>
+          <button class="btn btn-neon" type="submit">Start game</button>
+        </div>
+        <div id="nickHelp" class="form-text text-danger" role="alert" hidden>Use 2 to 16 characters.</div>
+      </form>
+
+      <div id="game" hidden>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div id="hearts" class="hearts" aria-label="Lives left"></div>
+          <div id="roundLabel" class="round-label"></div>
+        </div>
+        <div class="progress mb-3" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="3">
+          <div id="roundBar" class="progress-bar"></div>
+        </div>
+        <h2 id="qText" class="q-text"></h2>
+        <div id="options" class="d-grid gap-2"></div>
+        <p id="gateMsg" class="gate-msg" role="status" aria-live="polite"></p>
+        <button id="retryBtn" class="btn btn-neon w-100" type="button" hidden>Try again</button>
+      </div>
+
+      <p id="offlineNote" class="offline-note" hidden>PHP server not found, so this is running in offline demo mode.</p>
+    </div>
+  </section>
+
+  <!-- ============ APP: the start page ============ -->
+  <main id="app" class="app container" hidden>
+    <header class="topbar">
+      <div>
+        <p id="greeting" class="greeting"></p>
+        <p class="level-line"><span id="levelText"></span></p>
+      </div>
+      <div class="xp-wrap">
+        <div class="progress xp" role="progressbar" aria-label="XP to next level" aria-valuemin="0" aria-valuemax="50">
+          <div id="xpBar" class="progress-bar"></div>
+        </div>
+        <button id="logoutBtn" class="btn btn-sm btn-ghost" type="button">Switch player</button>
+      </div>
+    </header>
+
+    <form id="searchForm" class="search" role="search">
+      <label for="query" class="visually-hidden">Search Google</label>
+      <input id="query" class="form-control form-control-lg" type="search" spellcheck="false" placeholder="Search Google or type a web address">
+      <button class="btn btn-neon btn-lg" type="submit">Search</button>
+    </form>
+
+    <nav aria-label="Shortcuts">
+      <ul id="tiles" class="tiles"></ul>
+    </nav>
+
+    <div class="row g-3 widgets">
+      <section class="col-12 col-lg-4" aria-labelledby="clockTitle">
+        <div class="panel h-100">
+          <h2 id="clockTitle" class="panel-title">Right now</h2>
+          <p id="clock" class="clock" aria-live="off">--:--:--</p>
+          <p id="date" class="date"></p>
+        </div>
+      </section>
+
+      <section class="col-12 col-lg-4" aria-labelledby="dropTitle">
+        <div class="panel h-100 d-flex flex-column">
+          <h2 id="dropTitle" class="panel-title">Daily drop</h2>
+          <p id="dropType" class="drop-type"></p>
+          <p id="dropText" class="drop-text"></p>
+          <button id="dropBtn" class="btn btn-sm btn-ghost mt-auto align-self-start" type="button">Another one</button>
+        </div>
+      </section>
+
+      <section class="col-12 col-lg-4" aria-labelledby="todoTitle">
+        <div class="panel h-100">
+          <h2 id="todoTitle" class="panel-title">Quests</h2>
+          <form id="todoForm" class="input-group mb-3">
+            <label for="todoInput" class="visually-hidden">New quest</label>
+            <input id="todoInput" class="form-control" type="text" maxlength="60" placeholder="Add a quest (+10 XP when done)">
+            <button class="btn btn-neon" type="submit">Add quest</button>
+          </form>
+          <ul id="todoList" class="todo-list list-unstyled mb-0"></ul>
+          <p id="todoEmpty" class="todo-empty">No quests yet. Add one above.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
